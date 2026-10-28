@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12355b">
+  <meta name="description" content="정신간호2 이상행동 용어를 의미형과 사례형으로 학습하는 주관식 퀴즈">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta property="og:title" content="정신간호2 이상행동 주관식 퀴즈">
+  <meta property="og:description" content="113개 용어를 의미형·사례형 문제로 학습하세요.">
+  <meta property="og:type" content="website">
+  <title>정신간호2 이상행동 주관식 퀴즈</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">정신간호2 · 이상행동</p>
+        <h1>의미를 보고 용어 맞히기</h1>
+        <p class="subtitle">틀리면 한 번 더. 두 번째에도 틀리면 정답을 확인하고 다음 문제로 넘어갑니다.</p>
+      </div>
+      <button id="resetBtn" class="ghost" type="button">처음부터</button>
+    </header>
+
+    <section class="toolbar" aria-label="퀴즈 설정">
+      <label>범위
+        <select id="categorySelect"><option value="all">전체 범위</option></select>
+      </label>
+      <label class="toggle"><input id="shuffleToggle" type="checkbox" checked><span>문제 섞기</span></label>
+      <label>문제 유형
+        <select id="typeSelect">
+          <option value="mixed">의미·사례 섞기</option>
+          <option value="meaning">의미형만</option>
+          <option value="scenario">사례형만</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="status" aria-label="진행 상황">
+      <div><strong id="progressText">0 / 0</strong><span>진행</span></div>
+      <div><strong id="correctText">0</strong><span>정답</span></div>
+      <div><strong id="wrongText">0</strong><span>오답</span></div>
+      <div><strong id="accuracyText">0%</strong><span>정답률</span></div>
+    </section>
+
+    <section id="quizCard" class="card" aria-live="polite">
+      <div class="card-top">
+        <span id="categoryBadge" class="badge"></span>
+        <div class="badge-group"><span id="typeBadge" class="type-badge">의미형</span><span id="attemptBadge" class="attempt">1차 시도</span></div>
+      </div>
+      <p id="questionLabel" class="question-label">이 의미에 해당하는 용어는?</p>
+      <h2 id="meaningText"></h2>
+
+      <form id="answerForm" autocomplete="off">
+        <label class="sr-only" for="answerInput">정답 입력</label>
+        <div class="answer-row">
+          <input id="answerInput" type="text" placeholder="용어를 입력하세요" required autofocus>
+          <button class="primary" type="submit">정답 확인</button>
+        </div>
+      </form>
+
+      <div class="actions">
+        <button id="hintBtn" class="secondary" type="button">앞글자 힌트</button>
+        <button id="nextBtn" class="primary hidden" type="button">다음 문제</button>
+      </div>
+      <div id="feedback" class="feedback hidden" role="status"></div>
+      <div id="meaningReview" class="review hidden"><strong>핵심 의미</strong><p id="meaningReviewText"></p></div>
+      <details id="exampleBox" class="example hidden">
+        <summary>PDF 속 예시·함께 제시된 내용</summary>
+        <p id="exampleText"></p>
+      </details>
+    </section>
+
+    <section id="completeCard" class="card complete hidden">
+      <p class="eyebrow">학습 완료</p>
+      <h2>선택한 범위의 문제를 모두 풀었습니다.</h2>
+      <p id="finalScore"></p>
+      <div class="actions centered">
+        <button id="retryWrongBtn" class="secondary" type="button">틀린 문제만 다시</button>
+        <button id="restartBtn" class="primary" type="button">전체 다시 풀기</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>용어와 의미는 제공된 두 PDF의 정리 내용만 사용했으며, 사례 문항은 해당 의미를 학습하기 위한 상황으로 구성했습니다. 학습 기록은 이 기기의 브라우저에만 저장됩니다.</p>
+    </footer>
+  </main>
+  <script src="quiz-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
