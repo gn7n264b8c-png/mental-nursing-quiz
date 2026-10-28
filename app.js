@@ -1,6 +1,6 @@
 (() => {
   const DATA = window.QUIZ_DATA || [];
-  const STORAGE_KEY = 'mental-nursing-quiz-v2';
+  const STORAGE_KEY = 'mental-nursing-quiz-github-v1';
   const $ = (id) => document.getElementById(id);
   const el = {
     category: $('categorySelect'), shuffle: $('shuffleToggle'), type: $('typeSelect'),
